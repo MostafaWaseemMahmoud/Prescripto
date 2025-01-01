@@ -1,0 +1,112 @@
+.login-field {
+    width: 100%;
+    height: 832px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-field .login {
+    min-width: 24rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);
+    color: rgb(94 94 94 / var(--tw-text-opacity));
+    padding: 2rem;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: .75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-color: #e5e7eb;
+}
+
+.login-field .login h1 {
+    font-size:1.5rem;
+    font-weight: 600;
+    line-height: 2rem;
+    --tw-text-opacity: 1;
+    color: rgb(94 94 94 / var(--tw-text-opacity));
+}
+.login-field .login P {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 2rem;
+    --tw-text-opacity: 1;
+    color: rgb(94 94 94 / var(--tw-text-opacity));
+}
+form {
+    width: 100%;
+}
+
+.field {
+    width: 100%;
+}
+.login-field .login .field span {
+    font-size: 14px;
+    line-height: 2rem;
+    --tw-text-opacity: 1;
+    color: rgb(94 94 94 / var(--tw-text-opacity));
+}
+
+.login-field .login .field input {
+    width: 100%;
+    padding: .5rem;
+    --tw-border-opacity: 1;
+    border-color: rgb(218 218 218 / 1);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: .25rem;
+}
+
+
+form button {
+    -tw-bg-opacity: 1;
+    background-color: rgb(95 111 255 / 1);
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: .80rem;
+    padding-bottom: .80rem;
+    color: rgb(255 255 255 / 1);
+    font-weight: 300;
+    border: none;
+    cursor: pointer;
+    border-radius: .25rem;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.outLink a {
+    color: rgb(95 111 255 / 1);
+}
+
+.field1 input{
+    display: none;
+}
+
+.field1 {
+    margin-top:20px;
+}
+
+.field1 label {
+    margin-top:20px;
+    border: rgb(218 218 218 / 1) 2px;
+    padding: 14px;
+    margin-top: 20px;
+    border-style: dashed;
+    color: rgb(95 111 255 / 1);
+    cursor: pointer;
+}
+
+.error {
+    display: flex;
+    align-items: center;
+    display: none;
+    transition: 1s;
+}
+.red-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background-color: red;
+    margin-right: 20px;   
+}

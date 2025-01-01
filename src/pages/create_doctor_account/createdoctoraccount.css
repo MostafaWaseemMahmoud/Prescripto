@@ -1,0 +1,138 @@
+.create-doctor-contaiener {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.create-doctor-contaiener .login-field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.create-doctor-contaiener .login {
+    width: 100%;
+}
+
+.create-doctor-contaiener form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.create-doctor-contaiener .field, 
+.create-doctor-contaiener .field1 {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-doctor-contaiener .field span,
+.create-doctor-contaiener .field1 label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.create-doctor-contaiener input[type="text"],
+.create-doctor-contaiener input[type="email"],
+.create-doctor-contaiener input[type="password"],
+.create-doctor-contaiener input[type="file"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.create-doctor-contaiener input[type="text"]:focus,
+.create-doctor-contaiener input[type="email"]:focus,
+.create-doctor-contaiener input[type="password"]:focus,
+.create-doctor-contaiener input[type="file"]:focus {
+    border-color: #007bff;
+}
+
+.create-doctor-contaiener button {
+    grid-column: 1 / -1; /* Make the button span the entire width of the form */
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.create-doctor-contaiener button:hover {
+    background-color: #0056b3;
+}
+
+.create-doctor-contaiener .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.create-doctor-contaiener select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    appearance: none; /* Remove default browser styling */
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D'http%3A//www.w3.org/2000/svg'%20viewBox%3D'0%200%204%205'%3E%3Cpath%20fill%3D'%23aaa'%20d%3D'M2%200L0%202h4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px 8px;
+}
+
+.create-doctor-contaiener select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    background-color: #fff;
+}
+
+.create-doctor-contaiener option {
+    font-size: 16px;
+    padding: 10px;
+}
+
+.create-doctor-contaiener .field select {
+    margin-top: 5px;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    .create-doctor-contaiener form {
+        grid-template-columns: 1fr; /* Stack fields vertically */
+    }
+
+    .create-doctor-contaiener button {
+        padding: 15px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 401px) {
+    .login-field .login {
+        max-width: 16rem;
+        min-width: unset;
+    }
+}
+
+@media (max-width: 317px) {
+    .field1 label {
+        margin-top: 20px;
+        padding: 6px;
+        font-size: 12px;
+    }
+    .create-doctor-contaiener button {
+        padding: 10px 15px;
+        font-size: 12px;
+    }
+}

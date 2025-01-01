@@ -1,0 +1,170 @@
+.doctor-card {
+    display:flex;
+    margin-top: 20px;
+}
+
+.doctor-card .doctor-img img {
+    max-width: 18rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(95 111 255 / var(--tw-bg-opacity));
+    border-radius: .5rem;
+}
+.doctor-card .doctor-info {
+    margin-left: 20px;
+    border-color: rgb(173 173 173 / 1);
+    border-width: 1px;
+    border-radius: .5rem;
+    border-style: solid;
+    width: 100%;
+    padding: 20px;
+}
+.doctor-card .doctor-info h1{
+    color: rgb(55 65 81 / 1);
+    display: flex;
+    align-items: center;
+}
+
+.doctor-card .doctor-info h1 img {
+    margin-left: 11px;
+}
+
+.doctor-card .doctor-info .doctor-specialization {
+    --tw-text-opacity: 1;
+    color: rgb(75 85 99 / var(--tw-text-opacity));
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+    font-size: 20px;
+}
+
+.word {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.word img{
+    width: .75rem;
+}
+
+.p-def {
+    --tw-text-opacity: 1;
+    color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.book-appointment-btn {
+    -tw-bg-opacity: 1;
+    background-color: rgb(95 111 255 / 1);
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: .80rem;
+    padding-bottom: .80rem;
+    color: rgb(255 255 255 / 1);
+    font-weight: 300;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Spinner Loader */
+.loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    margin: 100px auto;
+  }
+  
+  /* Spinner Animation */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Overlay for the loader */
+  .loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .message {
+    position: absolute;
+    background-color: rgba(230, 229, 229, 0.212);
+    height: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    top:0;
+    width: 100%;
+    --tw-text-opacity: 1;
+    color: rgb(95 111 255 / 1);
+    display: none;
+  }
+
+  @media (max-width: 692px) {
+    .doctor-card {
+        flex-direction: column;
+    }
+
+    .doctor-card .doctor-info {
+        margin: 0;
+    }
+
+    .doctor-card .doctor-img img {
+        max-width: 18rem;
+        --tw-bg-opacity: 1;
+        background-color: rgb(95 111 255 / var(--tw-bg-opacity));
+        border-radius: .5rem;
+        min-width: 99%;
+    }
+}
+  @media (max-width: 307px) {
+    .doctor-card {
+        flex-direction: column;
+    }
+
+    .doctor-card .doctor-info h1{
+        font-size: 21px;
+    }
+
+    .doctor-card .doctor-info {
+        margin: 0;
+        width: 100%;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    .doctor-card .doctor-img img {
+        max-width: 15rem;
+        min-width: unset;
+    }
+}
+  @media (max-width: 272px) {
+    .doctor-card .doctor-info {
+        display: block;
+        text-align: unset;
+        width: 115%;
+    }
+    .doctor-card .doctor-img img {
+        max-width: 13.5rem;
+        min-width: unset;
+    }
+    .doctor-card {
+        flex-direction: column;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

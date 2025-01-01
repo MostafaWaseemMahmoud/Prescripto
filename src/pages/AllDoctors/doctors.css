@@ -1,0 +1,93 @@
+.filters {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f9f9f9; /* Optional for better visibility */
+}
+
+.filter-buttons {
+  display: grid;
+  gap: 10px; /* Spacing between buttons */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive grid */
+  width: 100%; /* Ensure it takes the full width of the container */
+  max-width: 600px; /* Optional: Limit the maximum width */
+}
+
+.filter-buttons button {
+    margin-left: 20px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: .80rem;
+    padding-bottom: .80rem;
+    background-color: rgb(95 111 255 / 1);
+    color: rgb(255 255 255 / 1);
+    font-weight: 300;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+    padding: 20px;
+    display: flex;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }
+
+.filter-buttons button:hover {
+    background-color: rgb(63 83 255 / 1); /* Darken background color on hover */
+    transform: translateY(-4px); /* Slightly raise the button */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.ErrorP {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: rgb(63 83 255 / 1);
+}
+
+/* Loader Container */
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background-color: rgba(0, 0, 0, 0.1); /* Light background behind loader */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  /* Loader */
+  .loader {
+    border: 8px solid #f3f3f3; /* Light grey background for loader */
+    border-top: 8px solid rgb(63 83 255 / 1); /* The loader color */
+    border-radius: 50%; /* Circular shape */
+    width: 50px;
+    height: 50px;
+    animation: spin 1.5s linear infinite; /* Animation for spinning effect */
+  }
+  
+  /* Spin Animation */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg); /* Start from 0 degrees */
+    }
+    100% {
+      transform: rotate(360deg); /* End at 360 degrees */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .filters {
+        padding: 10px;
+    }
+
+    .filter-buttons {
+        gap: 8px;
+    }
+}

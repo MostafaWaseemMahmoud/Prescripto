@@ -1,0 +1,24 @@
+.admin div {
+    margin-left: 20px;
+}
+
+.admin h1 span {
+    color: rgb(241, 63, 63);
+}
+
+.admin h1 {
+    color: #fff;
+}
+
+.admin .total-appoinments {
+    width: 50%;
+}
+@media (max-width: 1164px) {
+    .admin div {
+        margin-left: 0;
+        padding: 10px;
+    }
+    .admin .total-appoinments  {
+        width: 100%;
+    }
+}
