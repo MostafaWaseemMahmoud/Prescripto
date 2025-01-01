@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import emailjs from '@emailjs/browser';
 import './adminpanel.css';
 
 const AdminPanel = () => {
@@ -19,28 +18,6 @@ const AdminPanel = () => {
         getAdmin();
     }, []);
 
-    const sendEmail = (toEmail, username, action) => {
-        const templateParams = {
-            to_email: toEmail,
-            to_name: username,
-            action: action === "accept" ? "accepted" : "denied",
-        };
-
-        emailjs
-            .send(
-                "YOUR_SERVICE_ID",  // Replace with your EmailJS service ID
-                "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID
-                templateParams,
-                "YOUR_PUBLIC_KEY"   // Replace with your EmailJS public key
-            )
-            .then((response) => {
-                console.log("Email sent successfully:", response.status, response.text);
-            })
-            .catch((err) => {
-                console.error("Failed to send email:", err);
-            });
-    };
-
     const handleDoctorAction = async (doctor, action) => {
         try {
             const endpoint = action === "accept"
@@ -50,12 +27,6 @@ const AdminPanel = () => {
             await axios.post(endpoint);
             console.log(`Doctor ${action === "accept" ? "accepted" : "denied"}.`);
 
-            // Send email
-            sendEmail(
-                doctor.email,
-                doctor.username,
-                action
-            );
 
             // Reload page to reflect changes
             window.location.reload();
