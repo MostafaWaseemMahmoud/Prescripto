@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import './createdoctoraccount.css';
 
 const CreateDoctorAccount = () => {
@@ -23,9 +23,11 @@ const CreateDoctorAccount = () => {
     }, []);
 
     const validateForm = async () => {
+        console.log("Validating Form .....");
+        
         const allFields = document.querySelectorAll("input");
         const formData = new FormData();
-
+        
         const requiredFields = [
             { key: "username", index: 0, message: "Full Name is required" },
             { key: "email", index: 1, message: "Valid Email is required" },
@@ -34,9 +36,9 @@ const CreateDoctorAccount = () => {
             { key: "age", index: 4, message: "Age is required" },
             { key: "appoimentprise", index: 5, message: "Appointment Price is required" },
             { key: "about", index: 6, message: "About is required" },
-            { key: "location", index: 7, message: "Location is required" },
+            { key: "locatoin", index: 7, message: "Location is required" },
         ];
-
+        
         const errors = {};
         requiredFields.forEach(({ key, index, message }) => {
             if (!allFields[index]?.value) {
@@ -51,31 +53,33 @@ const CreateDoctorAccount = () => {
         } else {
             formData.append("job", selectedJob);
         }
-
+        
         const fileInput = document.getElementById("fileField");
         if (!fileInput?.files || fileInput.files.length === 0) {
             errors.profilePic = "Profile picture is required";
         } else {
             formData.append('profilePic', fileInput.files[0]);
         }
-
+        
         setFormErrors(errors);
-
+        
         if (Object.keys(errors).length > 0) {
             return;
         }
-
+        
         // Check if doctor already exists
+        console.log(allFields);
         try {
             const response = await axios.get("https://prescripto-backend.up.railway.app/mng/alldoctors");
             const existingDoctor = response.data.find((doctor) => doctor.email === allFields[1].value);
             if (existingDoctor) {
                 window.localStorage.setItem("doctor", existingDoctor._id);
+                window.location.reload();
+                Navigate("/");
                 return;
             }
-        } catch (error) {
+            } catch (error) {
             console.error("Error checking existing doctor:", error);
-            return;
         }
 
         // Submit form
@@ -90,6 +94,7 @@ const CreateDoctorAccount = () => {
                 }
             );
             alert("Your application has been submitted. Wait for admin approval.");
+            console.log("Dara Connected Succ");
             window.localStorage.setItem("doctor_waiting", allFields[1].value);
             navigate("/");
         } catch (error) {
