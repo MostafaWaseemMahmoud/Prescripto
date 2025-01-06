@@ -105,7 +105,7 @@ const Header = () => {
                 ) : (
                     <div className="btn">
                         <aside className='create-btn-aside'>
-                        <button className="create-btn" onClick={() => navigate('/createAccount')}>
+                        <button className="create-btn" onClick={() => {navigate('/createAccount')}}>
                             Create Account
                         </button>
                         </aside>

@@ -220,10 +220,11 @@ header .btn button {
     }
     .create-btn-aside {
         background-color: rgb(95 111 255 / 1);
-        margin-top: -22px;
+        margin-top: -48px;
+        height: 200px;
     }
     header nav {
-        margin-top: 8px;
+        margin-top: 143px;
         z-index: 3;
         padding: 16px;
     }
@@ -249,7 +250,7 @@ header .btn button {
     }
 
     section {
-        margin: 112px auto; /* Center align */
+        margin: 80px auto; /* Center align */
     }
 
     section .userdata {

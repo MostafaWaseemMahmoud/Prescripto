@@ -213,7 +213,7 @@ const CreateAccount = () => {
                         </button>
                     </form>
                     <p className="outLink">Are You Doctor? <a onClick={()=>Navigate("/create/doctor")}>Create Doctor Account</a></p>
-                    <p className="outLink">Already have An Account: <a onClick={()=>Navigate("/join")}>Find It</a></p>
+                    <p className="outLink">Already have An Account: <a onClick={()=>Navigate("/findaccount")}>Find It</a></p>
                 </div>
             </div>
         </div>
