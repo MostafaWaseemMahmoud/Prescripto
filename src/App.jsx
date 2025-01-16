@@ -12,7 +12,8 @@ import Doctors from './pages/AllDoctors/Doctors';
 import Doctor_DashBoard from './pages/Doctor_DashBoard/DoctorDashboard';
 import Create_Doctor_Account from './pages/create_doctor_account/CreateDoctorAccount';
 import Admin_Panel from './pages/AdminPanel/AdminPanel';
-import FindDoctorAccount from './pages/FindAccount/Findaccount';
+import FindDoctorAccount from './pages/Find_doctor_account/FindDoctorAccount';
+import FindAccount from './pages/FindAccount/Findaccount';
 
 function App() {
   function getPage() {
@@ -43,7 +44,8 @@ function App() {
       <Route path="/doctor/dashboard" element={<Doctor_DashBoard />} />
       <Route path="/create/doctor" element={<Create_Doctor_Account />} />
       <Route path="/adminPanel" element={<Admin_Panel></Admin_Panel>} />
-      <Route path="/findaccount" element={<FindDoctorAccount></FindDoctorAccount>} />
+      <Route path="/findaccount" element={<FindAccount></FindAccount>} />
+      <Route path="/find/doctoraccount" element={<FindDoctorAccount />} />
     </Routes>
   )
       </>

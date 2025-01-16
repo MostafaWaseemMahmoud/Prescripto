@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import './findaccount.css'
 import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
-const FindAccount = () => {
+const FindDoctorAccount = () => {
         useEffect(()=>{
             if(window.localStorage.getItem("doctor")){
                 Navigate('/')
@@ -32,20 +31,20 @@ const FindAccount = () => {
         }
 
         try {
-            const res = await axios.get("https://prescripto-backend.up.railway.app/mng/allpatients");
+            const res = await axios.get("https://prescripto-backend.up.railway.app/mng/alldoctors");
             let doctorFound = false;
         
-            for (const patinet of res.data) {
-                if (patinet.email === allField[0].value) {
+            for (const doctor of res.data) {
+                if (doctor.email === allField[0].value) {
                     doctorFound = true;
         
-                    if (patinet.password !== allField[1].value) {
+                    if (doctor.password !== allField[1].value) {
                         document.querySelector(".message1").style.display = "flex";
                         return;
                     }
         
                     // Store doctor ID in localStorage
-                    window.localStorage.setItem("patient", patinet._id);
+                    window.localStorage.setItem("doctor", doctor._id);
                     Navigate('/')
                     window.location.reload();
                     return;
@@ -72,8 +71,8 @@ const FindAccount = () => {
     </div>
             <div className="login-field">
                 <div className="login">
-                    <h1>Find Account</h1>
-                    <p>Easy Find Your Account</p>
+                    <h1>Find Doctor Account</h1>
+                    <p>Easy Find Your Doctor Account</p>
                     <form>
                         <div className="field">
                             <span>Email</span>
@@ -101,11 +100,10 @@ const FindAccount = () => {
                             Find account
                         </button>
                     </form>
-                    <p className="outLink">Are You Doctor? <a onClick={()=>Navigate("/find/doctoraccount")}>Find Doctor Account</a></p>
                 </div>
             </div>
         </div>
   );
 };
 
-export default FindAccount;
+export default FindDoctorAccount;
