@@ -199,16 +199,22 @@ header .btn button {
 @media (max-width: 423px) {
     .menu-span {
         display:block;
+        background-color: black;
+        margin-left: unset;
     }
     .menu {
+        position: absolute;
+        top: 40px;
+        left: 0;
         display: flex;
         flex-direction: column;
         width: 100%;
         align-items: center;
         justify-content: center;
+        z-index: 4;
     }
         header {
-            position: fixed;
+            position: absolute;
             top: 40px;
             z-index: 3;
             background: #fff;
