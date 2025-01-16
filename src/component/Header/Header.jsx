@@ -59,11 +59,17 @@ const Header = () => {
     }, []);
 
     return (
-        <header>
+        <>
+        <div className="menu" onClick={()=>{IsBlock ? SetIsBlock(false) : SetIsBlock(true)}}>
+        <span className='menu-span'></span>
+        <span className='menu-span'></span>
+        <span className='menu-span'></span>
+    </div>
+        <header className= {IsBlock ? 'block' : ''}>
             <div className="logo">
                 <img src="/Logo2.svg" alt="Logo" style={{ width: '11rem', height: 'auto' }} />
             </div>
-            <nav className={IsBlock ? 'block' : ''}>
+            <nav>
                 <li className="Home active" onClick={(e) => {
                     changeActiveState(e);
                     navigate("/");
@@ -76,7 +82,7 @@ const Header = () => {
                         <button onClick={() => navigate('/adminPanel')}>Admin Panel</button>
                     </li>
             </nav>
-            <section className={IsBlock ? 'block' : ''}>
+            <section>
                 {loading ? (
                     <p>Loading...</p>
                 ) : profilePic ? (
@@ -112,12 +118,8 @@ const Header = () => {
                     </div>
                 )}
             </section>
-            <div className="menu" onClick={()=>{IsBlock ? SetIsBlock(false) : SetIsBlock(true)}}>
-                                    <span className='menu-span'></span>
-                                    <span className='menu-span'></span>
-                                    <span className='menu-span'></span>
-                                </div>
         </header>
+                </>
     );
 };
 

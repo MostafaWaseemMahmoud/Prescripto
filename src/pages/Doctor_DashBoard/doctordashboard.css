@@ -116,6 +116,9 @@
     color: white;
     border: none;
   }
+  .total-appoinments {
+    width: 60%;
+  }
   
   @media (max-width: 1165px) {
     .head {
@@ -220,9 +223,6 @@
   transition: background-color 0.3s;
 }
 
-.w-100 {
-  width: 60%;
-}
 
 .show-phone:hover {
   background-color: #45a049; /* Darker green */
