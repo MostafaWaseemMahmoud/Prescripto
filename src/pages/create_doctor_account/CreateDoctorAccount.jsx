@@ -236,7 +236,7 @@ const CreateDoctorAccount = () => {
 
     return (
         <>
-        <div className="message" onClick={()=>{document.querySelector(".message").style.display = "none"}}>
+        <div className="message" onClick={()=>{document.querySelector(".message").style.display = "none"; navigate('/')}}>
             Your Details Was Sending Succ To The 
             Admin Pls Wait The Accepet Email
         </div>
