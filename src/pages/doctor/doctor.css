@@ -146,7 +146,7 @@
         text-align: center;
     }
     .doctor-card .doctor-img img {
-        max-width: 15rem;
+        max-width: 100%;
         min-width: unset;
     }
 }
@@ -154,7 +154,8 @@
     .doctor-card .doctor-info {
         display: block;
         text-align: unset;
-        width: 115%;
+        max-width: 13.5rem;
+        
     }
     .doctor-card .doctor-img img {
         max-width: 13.5rem;

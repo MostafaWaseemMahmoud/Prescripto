@@ -9,3 +9,11 @@
 .container {
     margin: 20px 10%;
 }
+@media (max-width: 507px) {
+    .container {
+        margin: 0
+    }
+    .Speciality .data .type {
+        margin-left: 0;
+    }
+}

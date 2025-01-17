@@ -51,6 +51,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    width: 100%;
 }
 
 .top-doctors .top_doctors .doctor:hover {
@@ -61,7 +62,7 @@
 
 .top-doctors .top_doctors .doctor img {
     width: 100%;
-    height: 200px;
+    height: 330px;
     object-fit: cover;
     border-bottom: 1px solid #c9d8ff;
 }

@@ -129,6 +129,8 @@ header .btn button {
     display: none;
 }
 
+
+
 @media (max-width: 1212px) {
     header nav li {
         display: inline-flex;
@@ -139,6 +141,7 @@ header .btn button {
     cursor: pointer;
     }
   }
+
 @media (max-width: 1206px) {
     .go_dashBoard button {
         margin-left: 20px;
@@ -177,7 +180,6 @@ header .btn button {
 @media (max-width: 1105px) {
     header  {
         flex-direction: column;
-        
     }
 
     .create-btn {
@@ -204,7 +206,7 @@ header .btn button {
     }
     .menu {
         position: absolute;
-        top: 40px;
+        top: 0;
         left: 0;
         display: flex;
         flex-direction: column;
@@ -212,10 +214,11 @@ header .btn button {
         align-items: center;
         justify-content: center;
         z-index: 4;
+        margin-top: 5px;
     }
         header {
             position: absolute;
-            top: 40px;
+            top: 0;
             z-index: 3;
             background: #fff;
             width: 100%;
