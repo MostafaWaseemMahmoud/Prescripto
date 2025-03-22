@@ -125,7 +125,6 @@ const CreateAccount = () => {
                 }
             );
             window.localStorage.setItem("patient" , response.data._id);
-            window.location.reload();
             Navigate("/");
         } catch (error) {
             console.error("Error: ", error.response ? error.response.data : error.message);

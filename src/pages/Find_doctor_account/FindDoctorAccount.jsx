@@ -46,7 +46,6 @@ const FindDoctorAccount = () => {
                     // Store doctor ID in localStorage
                     window.localStorage.setItem("doctor", doctor._id);
                     Navigate('/')
-                    window.location.reload();
                     return;
                 }
             }

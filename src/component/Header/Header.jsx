@@ -1,25 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import './header.css';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Header = () => {
     const [profilePic, setProfilePic] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [userType, setUserType] = useState(null); // Tracks whether the user is a patient or a doctor
+    const [userType, setUserType] = useState(null); // 'doctor' أو 'patient'
+    const [isBlock, setIsBlock] = useState(false);
     const navigate = useNavigate();
-    const [IsBlock,SetIsBlock] = useState();
-    const changeActiveState = (e) => {
-        if (e.target.classList.contains("active")) {
-            console.log("You already activated this item.");
-            return;
-        }
 
-        document.querySelectorAll("li").forEach((li) => li.classList.remove("active"));
-        if (e.target.tagName === "LI") {
-            e.target.classList.add("active");
-        }
-    };
+    useEffect(() => {
+        const checkUser = () => {
+            const patientId = window.localStorage.getItem('patient');
+            const doctorId = window.localStorage.getItem('doctor');
+
+            if (doctorId) {
+                setUserType('doctor');
+            } else if (patientId) {
+                setUserType('patient');
+            } else {
+                setUserType(null);
+            }
+        };
+
+        const interval = setInterval(checkUser, 1000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -60,66 +68,56 @@ const Header = () => {
 
     return (
         <>
-        <div className="menu" onClick={()=>{IsBlock ? SetIsBlock(false) : SetIsBlock(true)}}>
-        <span className='menu-span'></span>
-        <span className='menu-span'></span>
-        <span className='menu-span'></span>
-    </div>
-        <header className= {IsBlock ? 'block' : ''}>
-            <div className="logo">
-                <img src="/Logo2.svg" alt="Logo" style={{ width: '11rem', height: 'auto' }} />
+            <div className="menu" onClick={() => setIsBlock(!isBlock)}>
+                <span className='menu-span'></span>
+                <span className='menu-span'></span>
+                <span className='menu-span'></span>
             </div>
-            <nav>
-                <li className="Home active" onClick={(e) => {
-                    changeActiveState(e);
-                    navigate("/");
-                }}>HOME</li>
-                <li className="alldoctors" onClick={(e) => {
-                    changeActiveState(e);
-                    navigate("/allDoctors");
-                }}>ALLDOCTORS</li>
+            <header className={isBlock ? 'block' : ''}>
+                <div className="logo">
+                    <img src="/Logo2.svg" alt="Logo" style={{ width: '11rem', height: 'auto' }} />
+                </div>
+                <nav>
+                    <li className="Home active" onClick={() => navigate("/")}>HOME</li>
+                    <li className="alldoctors" onClick={() => navigate("/allDoctors")}>ALL DOCTORS</li>
                     <li className="adminpanel">
                         <button onClick={() => navigate('/adminPanel')}>Admin Panel</button>
                     </li>
-            </nav>
-            <section>
-                {loading ? (
-                    <p>Loading...</p>
-                ) : profilePic ? (
-                 
-                    <div className='userdata'>
-                        <div className="profilePic">
-                            <img src={profilePic} alt="Profile" />
-                        </div>
-                        <div className="LogOut" onClick={() => {
-                            if (window.confirm('Are you sure you want to log out?')) {
-                                window.localStorage.removeItem(userType); // Remove either 'patient' or 'doctor'
-                                window.location.reload();
-                            }
-                        }}>
-                            <button>LogOut</button>
-                        </div>
-                        {
-                            window.localStorage.getItem('doctor') ?
-                            <div className="go_dashBoard">
-                                <button onClick={()=>navigate('/doctor/dashboard')}>DashBoard</button>
+                </nav>
+                <section>
+                    {loading ? (
+                        <p>Loading...</p>
+                    ) : profilePic ? (
+                        <div className='userdata'>
+                            <div className="profilePic">
+                                <img src={profilePic} alt="Profile" />
                             </div>
-                             : null
-                             
-                        }
-                    </div>
-                ) : (
-                    <div className="btn">
-                        <aside className='create-btn-aside'>
-                        <button className="create-btn" onClick={() => {navigate('/createAccount')}}>
-                            Create Account
-                        </button>
-                        </aside>
-                    </div>
-                )}
-            </section>
-        </header>
-                </>
+                            <div className="LogOut" onClick={() => {
+                                if (window.confirm('Are you sure you want to log out?')) {
+                                    window.localStorage.removeItem(userType);
+                                    window.location.reload();
+                                }
+                            }}>
+                                <button>LogOut</button>
+                            </div>
+                            {userType === 'doctor' && (
+                                <div className="go_dashBoard">
+                                    <button onClick={() => navigate('/doctor/dashboard')}>DashBoard</button>
+                                </div>
+                            )}
+                        </div>
+                    ) : (
+                        <div className="btn">
+                            <aside className='create-btn-aside'>
+                                <button className="create-btn" onClick={() => navigate('/createAccount')}>
+                                    Create Account
+                                </button>
+                            </aside>
+                        </div>
+                    )}
+                </section>
+            </header>
+        </>
     );
 };
 

@@ -47,7 +47,6 @@ const FindAccount = () => {
                     // Store doctor ID in localStorage
                     window.localStorage.setItem("patient", patinet._id);
                     Navigate('/')
-                    window.location.reload();
                     return;
                 }
             }
