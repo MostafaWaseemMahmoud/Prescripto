@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import './doctordashboard.css';
 import axios from 'axios';
-import emailjs from 'emailjs-com';
+import { useEffect, useState } from 'react';
+import './doctordashboard.css';
 
 const Doctor_DashBoard = () => {
   const [doctor, Setdoctor] = useState();
 
   const getDoctor = async () => {
-    await axios.get("https://prescripto-backend.up.railway.app/mng/alldoctors").then((res) => {
+    await axios.get("https://prescripto-back-end.vercel.app/mng/alldoctors").then((res) => {
       for (let i = 0; i < res.data.length; i++) {
         const doctor = res.data[i];
         if (doctor._id == window.localStorage.getItem("doctor")) {
@@ -24,7 +23,7 @@ const Doctor_DashBoard = () => {
   // Accept Appointment Function
   const AcceptApponiemnt = async (appointment) => {
     // Update appointment status
-    await axios.post(`https://prescripto-backend.up.railway.app/mng/acceptappoiment/${doctor._id}/${appointment._id}`).then(async (res) => {
+    await axios.post(`https://prescripto-back-end.vercel.app/mng/acceptappoiment/${doctor._id}/${appointment._id}`).then(async (res) => {
       console.log('Appointment accepted');
       window.location.reload();
     }).catch(err => {
@@ -35,7 +34,7 @@ const Doctor_DashBoard = () => {
   // Reject Appointment Function
   const RejectAppoinment = async (appointment) => {
     // Update appointment status
-    await axios.post(`https://prescripto-backend.up.railway.app/mng/denyappoiment/${doctor._id}/${appointment._id}`).then(async (res) => {
+    await axios.post(`https://prescripto-back-end.vercel.app/mng/denyappoiment/${doctor._id}/${appointment._id}`).then(async (res) => {
       console.log('Appointment Denied');
       window.location.reload();
     }).catch(err => {
@@ -46,7 +45,7 @@ const Doctor_DashBoard = () => {
   // Mark Appointment as Done Function
   const done = async (appointment) => {
     // Update appointment status
-    await axios.post(`https://prescripto-backend.up.railway.app/mng/donepatient/${doctor._id}/${appointment._id}`).then(async (res) => {
+    await axios.post(`https://prescripto-back-end.vercel.app/mng/donepatient/${doctor._id}/${appointment._id}`).then(async (res) => {
       console.log('Appointment Done Successfully');
       window.location.reload();
     }).catch(err => {

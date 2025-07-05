@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
 import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 const FindDoctorAccount = () => {
         useEffect(()=>{
             if(window.localStorage.getItem("doctor")){
@@ -31,25 +31,25 @@ const FindDoctorAccount = () => {
         }
 
         try {
-            const res = await axios.get("https://prescripto-backend.up.railway.app/mng/alldoctors");
+            const res = await axios.get("https://prescripto-back-end.vercel.app/mng/alldoctors");
             let doctorFound = false;
-        
+
             for (const doctor of res.data) {
                 if (doctor.email === allField[0].value) {
                     doctorFound = true;
-        
+
                     if (doctor.password !== allField[1].value) {
                         document.querySelector(".message1").style.display = "flex";
                         return;
                     }
-        
+
                     // Store doctor ID in localStorage
                     window.localStorage.setItem("doctor", doctor._id);
                     Navigate('/')
                     return;
                 }
             }
-        
+
             if (!doctorFound) {
                 console.log("No doctor with this email.");
                 document.querySelector(".message1").style.display = "flex";
@@ -58,7 +58,7 @@ const FindDoctorAccount = () => {
             console.error("Error fetching doctors:", error);
             document.querySelector(".message1").style.display = "flex";
         }
-        
+
         }
         const show =  ()=> {
             document.querySelector(".message1").style.display = "none"

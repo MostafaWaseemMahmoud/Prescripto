@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import './speciality.css';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
+import './speciality.css';
 
 const Speciality = () => {
     const [UserserverData, SetserverData] = useState([]); // Initialize as an empty array
 
     const getData = async () => {
         try {
-            const res = await axios.get("https://prescripto-backend.up.railway.app/def/page");
+            const res = await axios.get("https://prescripto-back-end.vercel.app/def/page");
             SetserverData(res.data.types || []); // Fallback to an empty array if `res.data.types` is undefined
         } catch (e) {
             console.error("Error While Getting Data From Server", e);

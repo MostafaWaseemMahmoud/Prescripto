@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import './doctors.css';
-import Header from '../../component/Header/Header';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './doctors.css';
 
 const Doctors = () => {
     const [UseallDoctors, SetallDoctors] = useState([]); // State for all doctors
@@ -13,8 +12,8 @@ const Doctors = () => {
 
     const getData = async () => {
         try {
-            const res = await axios.get("https://prescripto-backend.up.railway.app/mng/alldoctors");
-            const response1 = await axios.get("https://prescripto-backend.up.railway.app/def/page");
+            const res = await axios.get("https://prescripto-back-end.vercel.app/mng/alldoctors");
+            const response1 = await axios.get("https://prescripto-back-end.vercel.app/def/page");
             SetallDoctors(res.data); // Set all doctors data
             SetallTypes(response1.data.types); // Set types/categories of doctors
             setFilteredDoctors(res.data); // Initially show all doctors

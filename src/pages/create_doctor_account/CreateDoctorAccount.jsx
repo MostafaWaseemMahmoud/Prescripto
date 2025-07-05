@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './createdoctoraccount.css';
 
 const CreateDoctorAccount = () => {
@@ -13,7 +13,7 @@ const CreateDoctorAccount = () => {
     useEffect(() => {
         const fetchJobTypes = async () => {
             try {
-                const res = await axios.get("https://prescripto-backend.up.railway.app/def/page");
+                const res = await axios.get("https://prescripto-back-end.vercel.app/def/page");
                 setJobTypes(res.data.types || []);
             } catch (error) {
                 console.error("Error fetching job types:", error);
@@ -23,13 +23,13 @@ const CreateDoctorAccount = () => {
         fetchJobTypes();
         const fetchDoctorsEmails = async ()=> {
             try {
-                const res = await axios.get("https://prescripto-backend.up.railway.app/mng/alldoctors");
+                const res = await axios.get("https://prescripto-back-end.vercel.app/mng/alldoctors");
                 setemails(res.data || []);
             } catch (error) {
                 console.error("Error fetching job types:", error);
                 alert("Failed to load The Doctor Join Page Pls Try Again Later.");
             }
-        } 
+        }
         fetchDoctorsEmails();
     }, []);
 
@@ -37,7 +37,7 @@ const CreateDoctorAccount = () => {
         // Validate form
         const allFields = document.querySelectorAll("input");
         const allErrors = document.querySelectorAll(".error");
-        
+
         // Validate The UserName Field =>
 
         if(allFields[0].value.length < 3){
@@ -49,9 +49,9 @@ const CreateDoctorAccount = () => {
             allFields[0].style.color = "green";
             formData.append('username' , 'mostafa')
         }
-        
+
         // Validate The Email Field =>
-            
+
             if(allFields[1].value.length < 5 || !allFields[1].value.match(/\w+(\d+)?@gmail.com/)){
                 allErrors[1].style.display = "flex"
                 allFields[1].style.color = "unset"
@@ -65,19 +65,19 @@ const CreateDoctorAccount = () => {
                             break;
                         }
                     }
-                
+
                     if (emailExists) {
                         allErrors[1].childNodes[1].textContent = "This email already exists.";
                         allErrors[1].style.display = "flex";
                         allFields[1].style.color = "unset";
                         return;
                     }
-                
+
                     // If email is valid and doesn't exist
                     allErrors[1].style.display = "none";
                     allFields[1].style.color = "green";
                     formData.append('email', allFields[1].value);
-                
+
                 } catch (error) {
                     // Handle API errors
                     console.error("Error fetching doctors:", error);
@@ -86,9 +86,9 @@ const CreateDoctorAccount = () => {
                     allFields[1].style.color = "unset";
                 }
             }
-            
+
             // Validate The PhoneNumber Field =>
-                
+
                 if(!allFields[2].value.length == 11 || !allFields[2].value.match(/010\d\d\d\d\d\d\d\d/)){
                     allErrors[2].style.display = "flex"
                     allFields[2].style.color = "unset"
@@ -98,7 +98,7 @@ const CreateDoctorAccount = () => {
                     allFields[2].style.color = "green"
                     formData.append('phonenumber' , allFields[2].value)
                 }
-                
+
                 // Validate The Password Field =>
                     if(allFields[3].value.length > 7){
                         allErrors[3].style.display = "none"
@@ -141,7 +141,7 @@ const CreateDoctorAccount = () => {
                         allFields[6].style.color = "green"
                         formData.append('about' , allFields[6].value)
                     }
-                    
+
                     // Validate The Location Field =>
                     if(allFields[7].value.length == 0){
                             allFields[7].style.color = "unset"
@@ -155,7 +155,7 @@ const CreateDoctorAccount = () => {
                         // Validate The Job Selection Field =>
                             const selection = document.querySelector("select");
                         console.log(selection.value == '');
-                        
+
                         if (selection.value === '') {
                             allErrors[8].style.display = "flex"
                             selection.style.color = "unset"
@@ -165,7 +165,7 @@ const CreateDoctorAccount = () => {
                             selection.style.color = "green"
                             formData.append('job' , selection.value)
                         }
-                        
+
                         // validate Profile Pic Field =>
                     const IMAGE_FIELD = document.querySelector(".field1 input")
                         const IMAGE_LABEL = document.querySelector("#profile-image")
@@ -197,7 +197,7 @@ const CreateDoctorAccount = () => {
         try {
             setisLoading(true);
             axios.post(
-                "https://prescripto-backend.up.railway.app/signup/doctor",
+                "https://prescripto-back-end.vercel.app/signup/doctor",
                 formData1,
                 {
                     headers: {
@@ -237,7 +237,7 @@ const CreateDoctorAccount = () => {
     return (
         <>
         <div className="message" onClick={()=>{document.querySelector(".message").style.display = "none"; navigate('/')}}>
-            Your Details Was Sending Succ To The 
+            Your Details Was Sending Succ To The
             Admin Pls Wait The Accepet Email
         </div>
         <div className='container'>

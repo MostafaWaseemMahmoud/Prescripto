@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import './header.css';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './header.css';
 
 const Header = () => {
     const [profilePic, setProfilePic] = useState(null);
@@ -42,8 +42,8 @@ const Header = () => {
 
             try {
                 const [patientsRes, doctorsRes] = await Promise.all([
-                    axios.get('https://prescripto-backend.up.railway.app/mng/allpatients'),
-                    axios.get('https://prescripto-backend.up.railway.app/mng/alldoctors'),
+                    axios.get('https://prescripto-back-end.vercel.app/mng/allpatients'),
+                    axios.get('https://prescripto-back-end.vercel.app/mng/alldoctors'),
                 ]);
 
                 const patient = patientsRes.data.find((user) => user._id === userId);

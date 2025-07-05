@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 import './adminpanel.css';
 
 const AdminPanel = () => {
@@ -7,7 +7,7 @@ const AdminPanel = () => {
 
     const getAdmin = async () => {
         try {
-            const res = await axios.get("https://prescripto-backend.up.railway.app/mng/admin");
+            const res = await axios.get("https://prescripto-back-end.vercel.app/mng/admin");
             setAdmin(res.data[0]);
         } catch (err) {
             console.error("Error fetching admin data:", err);
@@ -21,8 +21,8 @@ const AdminPanel = () => {
     const handleDoctorAction = async (doctor, action) => {
         try {
             const endpoint = action === "accept"
-                ? `https://prescripto-backend.up.railway.app/mng/acceptdoctor/${doctor._id}`
-                : `https://prescripto-backend.up.railway.app/mng/disagreedoctor/${doctor._id}`;
+                ? `https://prescripto-back-end.vercel.app/mng/acceptdoctor/${doctor._id}`
+                : `https://prescripto-back-end.vercel.app/mng/disagreedoctor/${doctor._id}`;
 
             await axios.post(endpoint);
             console.log(`Doctor ${action === "accept" ? "accepted" : "denied"}.`);

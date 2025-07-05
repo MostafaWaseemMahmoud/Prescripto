@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import './findaccount.css'
 import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './findaccount.css';
 const FindAccount = () => {
         useEffect(()=>{
             if(window.localStorage.getItem("doctor")){
@@ -32,25 +32,25 @@ const FindAccount = () => {
         }
 
         try {
-            const res = await axios.get("https://prescripto-backend.up.railway.app/mng/allpatients");
+            const res = await axios.get("https://prescripto-back-end.vercel.app/mng/allpatients");
             let doctorFound = false;
-        
+
             for (const patinet of res.data) {
                 if (patinet.email === allField[0].value) {
                     doctorFound = true;
-        
+
                     if (patinet.password !== allField[1].value) {
                         document.querySelector(".message1").style.display = "flex";
                         return;
                     }
-        
+
                     // Store doctor ID in localStorage
                     window.localStorage.setItem("patient", patinet._id);
                     Navigate('/')
                     return;
                 }
             }
-        
+
             if (!doctorFound) {
                 console.log("No doctor with this email.");
                 document.querySelector(".message1").style.display = "flex";
@@ -59,7 +59,7 @@ const FindAccount = () => {
             console.error("Error fetching doctors:", error);
             document.querySelector(".message1").style.display = "flex";
         }
-        
+
         }
         const show =  ()=> {
             document.querySelector(".message1").style.display = "none"

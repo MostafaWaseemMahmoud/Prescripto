@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import Header from '../../component/Header/Header';
-import './create.css';
 import axios from 'axios';
-import {useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './create.css';
 
 const CreateAccount = () => {
     const formData = new FormData();
@@ -20,12 +19,12 @@ const CreateAccount = () => {
             window.document.querySelector(".hh").style.color = "green"
             return true;
         }
-        
+
     }
 
 
     const get_All_Ilness_Type = async()=> {
-        const res = await axios.get("https://prescripto-backend.up.railway.app/def/page");
+        const res = await axios.get("https://prescripto-back-end.vercel.app/def/page");
         SetTypes(res.data.types);
     }
 
@@ -36,7 +35,7 @@ const CreateAccount = () => {
             get_All_Ilness_Type()
         }
     },[])
-    
+
     const validateForm = async () => {
         const fileInput = document.querySelector("#fileField");
         const allFields = document.querySelectorAll("input");
@@ -56,7 +55,7 @@ const CreateAccount = () => {
                     allErrors[0].style.display = "none"
                 }
                 // Validate next Form Index [1]
-                if(allFields[1].value.length == 0){                    
+                if(allFields[1].value.length == 0){
                     console.log("No Full Data");
                     allErrors[1].style.display = "flex"
                     return
@@ -69,14 +68,14 @@ const CreateAccount = () => {
                         return
                     }else {
                         allErrors[2].style.display = "none";
-                        const res = await axios.get("https://prescripto-backend.up.railway.app/mng/allpatients");
+                        const res = await axios.get("https://prescripto-back-end.vercel.app/mng/allpatients");
                         for (let i = 0; i < res.data.length; i++) {
                             const doctor = res.data[i];
                             if(doctor.email === allFields[1].value){
                                 console.log("This Email Already Exist");
                                 allFields[1].value = "This Email Already Exist";
                                 allFields[1].style.color = "red";
-                                return 
+                                return
                             }
                         };
                         formData.append("email", allFields[1].value)
@@ -116,7 +115,7 @@ const CreateAccount = () => {
         }
         try {
             const response = await axios.post(
-                "https://prescripto-backend.up.railway.app/signup/patient",
+                "https://prescripto-back-end.vercel.app/signup/patient",
                 formData,
                 {
                     headers: {
@@ -188,7 +187,7 @@ const CreateAccount = () => {
                                         {
                                             Types.map((t) => (
                                                 <option value={t} key={t}>
-                                                    {t} 
+                                                    {t}
                                                 </option>
                                             ))
                                         }

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './doctors.css';
-import axios from 'axios';
 
 const TopDoctors = () => {
     const [Usedoctors, Setdoctors] = useState([]); // Initialize as an empty array
@@ -10,9 +10,9 @@ const TopDoctors = () => {
 
     const getDoctors = async () => {
         try {
-            const res = await axios.get("https://prescripto-backend.up.railway.app/mng/alldoctors");
+            const res = await axios.get("https://prescripto-back-end.vercel.app/mng/alldoctors");
             if(res.data.length > 5) {
-                res.data.length = res.data.length - 5  
+                res.data.length = res.data.length - 5
             }
             Setdoctors(res.data || []); // Fallback to an empty array if `res.data` is undefined
             setLoading(false); // Stop loading once data is fetched
